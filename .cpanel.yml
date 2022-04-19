@@ -2,23 +2,21 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home4/interxec/public_html/essgeelabs/
- - /bin/rm $DEPLOYPATH/style.css
- - /bin/rm -rf $DEPLOYPATH/images
- - /bin/cp -R about $DEPLOYPATH
- - /bin/cp -R archives $DEPLOYPATH
- - /bin/cp -R assets $DEPLOYPATH
- - /bin/cp -R categories $DEPLOYPATH
- - /bin/cp -R images $DEPLOYPATH
- - /bin/cp -R page $DEPLOYPATH
- - /bin/cp -R posts $DEPLOYPATH
- - /bin/cp -R search $DEPLOYPATH
- - /bin/cp -R tags $DEPLOYPATH
+ - /bin/cp -Rf about $DEPLOYPATH
+ - /bin/cp -Rf archives $DEPLOYPATH
+ - /bin/cp -Rf assets $DEPLOYPATH
+ - /bin/cp -Rf categories $DEPLOYPATH
+ - /bin/cp -Rf images $DEPLOYPATH
+ - /bin/cp -Rf page $DEPLOYPATH
+ - /bin/cp -Rf posts $DEPLOYPATH
+ - /bin/cp -Rf search $DEPLOYPATH
+ - /bin/cp -Rf tags $DEPLOYPATH
  - /bin/cp 404.html $DEPLOYPATH
  - /bin/cp favicon-16x16.png $DEPLOYPATH
  - /bin/cp favicon-32x32.png $DEPLOYPATH
  - /bin/cp favicon.ico $DEPLOYPATH
  - /bin/cp index.html $DEPLOYPATH
  - /bin/cp index.json $DEPLOYPATH
- - /bin/cp index.xml $DEPLOYPATH
+ - /bin/cp -f index.xml $DEPLOYPATH
  - /bin/cp robots.txt $DEPLOYPATH
- - /bin/cp sitemap.xml $DEPLOYPATH
+ - /bin/cp -f sitemap.xml $DEPLOYPATH

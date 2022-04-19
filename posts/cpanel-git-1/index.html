@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Using Git with cPanel to update your website | Ess Gee Labs</title>
+<meta name="keywords" content="devops, git, web hosting">
+<meta name="description" content="Configuing cPanel Git Versioning for Web Site deployment">
+<meta name="author" content="Sachin Ganpat">
+<link rel="canonical" href="https://essgeelabs.com/posts/cpanel-git-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.48a18943c2fc15c38a372b8dde1f5e5dc0bc64fa6cb90f5a817d2f8c76b7f3ae.css" integrity="sha256-SKGJQ8L8FcOKNyuN3h9eXcC8ZPpsuQ9agX0vjHa3864=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://essgeelabs.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://essgeelabs.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://essgeelabs.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://essgeelabs.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://essgeelabs.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Using Git with cPanel to update your website" />
+<meta property="og:description" content="Configuing cPanel Git Versioning for Web Site deployment" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://essgeelabs.com/posts/cpanel-git-1/" />
+<meta property="og:image" content="https://essgeelabs.com/images/egllogo.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-18T20:00:00-04:00" />
+<meta property="article:modified_time" content="2022-04-18T20:00:00-04:00" /><meta property="og:site_name" content="EssGeeLabs" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://essgeelabs.com/images/egllogo.jpg" />
+<meta name="twitter:title" content="Using Git with cPanel to update your website"/>
+<meta name="twitter:description" content="Configuing cPanel Git Versioning for Web Site deployment"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://essgeelabs.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Using Git with cPanel to update your website",
+      "item": "https://essgeelabs.com/posts/cpanel-git-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Using Git with cPanel to update your website",
+  "name": "Using Git with cPanel to update your website",
+  "description": "Configuing cPanel Git Versioning for Web Site deployment",
+  "keywords": [
+    "devops", "git", "web hosting"
+  ],
+  "articleBody": "In getting this website up and running I wanted a way to simplify updating the site from the command line to open opportunities for automation.\nFor this I wanted to be able to use Git to be able to mock up a website and then push the changes to the webhost once I was satisfied. So I was pleasantly surprised to find out that cPanel supports the use of Git repositories to do just that.\ncPanel is a web application that many web hosting providers use to allow customers to self-manage the backend of their websites.\nAll my examples here is based on Bluehost, who I use as my webhost. I’m also using Windows 10 but the techniques will work with other OSes.\nTo begin This is not a newbie tutorial. You should be comfortable with the command-line and understand how web server and web hosting works.\nYou should have Git installed. You can download from the Git website.\nYou can use any web editing tool that you would like. Remember that this would be a static website as compared to a dynamic website. I use Visual Studio Code for most of my editing needs.\nYou’ll need SSH key pairs. Generate them if you don’t already have one.\nAnd of course you need a web host that use cPanel with Git Version Control and a domain attached. I’m using an addon domain, but this will work for the main domain as well.\nAdd your SSH public key to the web host Log into your web host and in cPanel go to Security, and click on SSH Access. (In Bluehost you have to go to Advanced first.)\nClick on “Manage SSH Keys”\nThen click on “Import Key”.\nSpecify a name for the key and paste in the public key only. Then click on “Import”. Note that I can share my public key without fear of being compromised, which is the advantage of public-private key pairs.\nYou should see the new key in the “Public Keys” list. Click on “Manage” in the line with the key.\nNow click on “Authorize”. You should get a message saying that they key has been authorised.\nWhen you go back to the Public Key list you should see the “Authorization Status” of the key as “authorized”.\nCreate your Git Repository to cPanel Back to cPanel, go to “Files” and “Git Version Control”.\nWe’ll be creating a new repository. Click “Create”.\nIn the “Create Repository” window, disable the “Clone a Repository” toggle. This is only if you have an existing website hosted in another Git repository such as GitHub. We will be creating an empty repository.\nEnter the repository path. I created a folder for my repositories, and you should do the same. This is not the folder that is used to store your web pages (usually the ~/public_html or ~/www folders). You’ll see how to get the files in the correct location after.\nEnter a name for the repository.\nThen click on “Create”.\nYou should see a message that it was created successfully along with some instructions to add the repository to an existing project, or to clone the repository and build a new project. Copy and save these instructions.\nYour repository should now be listed into your list of repositories.\nEdit the SSH config Since the cPanel Git uses SSH to access the repository, you need to edit the SSH config file to point to your SSH private key file.\nGo to your home folder.\nIn Windows it’ll be something like:\nC:\\Users\\\\\nIn Linux it’ll be:\n\\home\\\\ or just ~\\\nYou’ll see a .ssh folder, if not, create it. Edit or create a text file named “config” with no extension (no .txt or anything).\nAdd the following to the file:\nHost HostKeyAlgorithms +ssh-rsa\rPubkeyAcceptedKeyTypes +ssh-rsa\rUser IdentityFile \"Save and close.\nClone the Git repository to your local computer Once you have Git installed, you can clone the repository to your local computer. In this example we’re cloning and not using an existing copy of a web site.\nYou can copy the Clone URL from the cPanel Git Version Control list.\nOpen a command or PowerShell prompt and navigate to the place where you would like to clone the repository.\nPS C:\\Users\\sganpat\\Website git clone ssh://@essgeelabs.net/home/essgeelab/repositories/essgeelab.net\rCloning into 'essgeelab.net'...\rwarning: You appear to have cloned an empty repository. cd essgeeglab.net Create a Readme file to do an initial commit and push.\necho \"# Readme\"  README.md\rgit add README.md\rgit commit -m \"initial commit\"\rgit push -u origin master You should get output like:\nEnumerating objects: 3, done.\rCounting objects: 100% (3/3), done.\rWriting objects: 100% (3/3), 216 bytes | 108.00 KiB/s, done.\rTotal 3 (delta 0), reused 0 (delta 0), pack-reused 0\rremote: Recieved update on checked-out branch, queueing deployment.\rremote: ---\rremote: apiversion: 3\rremote: func: create\rremote: module: VersionControlDeployment\rremote: result:\rremote: data: ~\rremote: errors: ~\rremote: messages: ~\rremote: metadata: {}\rremote:\rremote: status: 1\rremote: warnings: ~\rTo ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net\r\\* [new branch] master - master Great. All is setup to now push your website.\nCreate a small web page and deploy Create a simple static web page and associated files such as stylesheets and images and add them to the repository. For this example I’m using a simple page (download).\nPS C:\\Users\\sganpat\\Website\\essgeelab.net git status\rOn branch master\rYour branch is up to date with 'origin/master'.\rUntracked files:\r(use \"git add ...\" to include in what will be committed)\rimages/\rindex.html\rstyle.css\rnothing added to commit but untracked files present (use \"git add\" to track)\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git add *\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git commit -m \"simple website\"\r[master 5498e9e] simple website\r4 files changed, 197 insertions(+)\rcreate mode 100644 images/egllogo.png\rcreate mode 100644 images/twitter.png\rcreate mode 100644 index.html\rcreate mode 100644 style.css\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git push origin master\rEnumerating objects: 8, done.\rCounting objects: 100% (8/8), done.\rDelta compression using up to 8 threads\rCompressing objects: 100% (7/7), done.\rWriting objects: 100% (7/7), 15.86 KiB | 3.96 MiB/s, done.\rTotal 7 (delta 0), reused 0 (delta 0), pack-reused 0\rremote: Recieved update on checked-out branch, queueing deployment.\rremote: ---\rremote: apiversion: 3\rremote: func: create\rremote: module: VersionControlDeployment\rremote: result:\rremote: data: ~\rremote: errors: ~\rremote: messages: ~\rremote: metadata: {}\rremote:\rremote: status: 1\rremote: warnings: ~\rTo ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net\rb295c0c..5498e9e master - master Great, you’ve added the site to the repository. But when you browse to the URL it doesn’t work. That’s because it needs to be deployed. To do this, you need to create a text file called .cpanel.yml and add your deploy tasks in there. These are the bash commands you would run to deploy the site from the repository folder.\nFor instance, in my case it would be to copy the index.html and style.css files and the images folder to the root directory of the web server. So my .cpanel.yml file will look like:\n---\rdeployment:\rtasks:\r- export DEPLOYPATH=/home/essgeelab/public_html/essgeelabs.net/\r- /bin/cp index.html $DEPLOYPATH\r- /bin/cp style.css $DEPLOYPATH\r- /bin/cp -R images $DEPLOYPATH now commit that file and push to the remote respository.\ngit add .cpanel.yml\rgit commit -m \"cpanel deploy file\"\rgit push origin master Now the website should be operational.\n",
+  "wordCount" : "1211",
+  "inLanguage": "en",
+  "image":"https://essgeelabs.com/images/egllogo.jpg","datePublished": "2022-04-18T20:00:00-04:00",
+  "dateModified": "2022-04-18T20:00:00-04:00",
+  "author":{
+    "@type": "Person",
+    "name": "Sachin Ganpat"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://essgeelabs.com/posts/cpanel-git-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ess Gee Labs",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://essgeelabs.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://essgeelabs.com/" accesskey="h" title="Ess Gee Labs (Alt + H)">Ess Gee Labs</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.sachinganpat.com" title="personal website">
+                    <span>personal website</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.interxect.com" title="business website">
+                    <span>business website</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://essgeelabs.com/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://essgeelabs.com/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://essgeelabs.com/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://essgeelabs.com/">Home</a>&nbsp;»&nbsp;<a href="https://essgeelabs.com/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Using Git with cPanel to update your website
+    </h1>
+    <div class="post-meta"><span title='2022-04-18 20:00:00 -0400 -04'>April 18, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Sachin Ganpat&nbsp;|&nbsp;<a href="https://github.com/essgeelabs/essgeelabs/tree/master/content/posts/cpanel-git-1.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In getting this website up and running I wanted a way to simplify updating the site from the command line to open opportunities for automation.</p>
+<p>For this I wanted to be able to use Git to be able to mock up a website and then push the changes to the webhost once I was satisfied. So I was pleasantly surprised to find out that cPanel supports the use of Git repositories to do just that.</p>
+<p>cPanel is a web application that many web hosting providers use to allow customers to self-manage the backend of their websites.</p>
+<p>All my examples here is based on Bluehost, who I use as my webhost. I&rsquo;m also using Windows 10 but the techniques will work with other OSes.</p>
+<h2 id="to-begin">To begin<a hidden class="anchor" aria-hidden="true" href="#to-begin">#</a></h2>
+<p>This is not a newbie tutorial. You should be comfortable with the command-line and understand how web server and web hosting works.</p>
+<p>You should have Git installed. You can download from <a href="https://git-scm.com/">the Git website</a>.</p>
+<p>You can use any web editing tool that you would like. Remember that this would be a static website as compared to a <a href="https://www.geeksforgeeks.org/static-vs-dynamic-website/">dynamic website</a>. I use <a href="https://code.visualstudio.com/download">Visual Studio Code</a> for most of my editing needs.</p>
+<p>You&rsquo;ll need SSH key pairs. <a href="https://www.ssh.com/academy/ssh/putty/windows/puttygen">Generate them</a> if you don&rsquo;t already have one.</p>
+<p>And of course you need a web host that use cPanel with Git Version Control and a domain attached. I&rsquo;m using an addon domain, but this will work for the main domain as well.</p>
+<h2 id="add-your-ssh-public-key-to-the-web-host">Add your SSH public key to the web host<a hidden class="anchor" aria-hidden="true" href="#add-your-ssh-public-key-to-the-web-host">#</a></h2>
+<p>Log into your web host and in cPanel go to Security, and click on SSH Access. (In Bluehost you have to go to Advanced first.)</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/01.png" alt="SSH Access"  />
+</p>
+<p>Click on &ldquo;Manage SSH Keys&rdquo;</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/02.png" alt="Manage SSH Keys"  />
+</p>
+<p>Then click on &ldquo;Import Key&rdquo;.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/03.png" alt="Import Key"  />
+</p>
+<p>Specify a name for the key and paste in the <em><!-- raw HTML omitted -->public key only<!-- raw HTML omitted --></em>. Then click on &ldquo;Import&rdquo;. Note that I can share my public key without fear of being compromised, which is the advantage of public-private key pairs.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/04.png" alt="Enter Key Information"  />
+</p>
+<p>You should see the new key in the &ldquo;Public Keys&rdquo; list. Click on &ldquo;Manage&rdquo; in the line with the key.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/05.png" alt="Manage the new key"  />
+</p>
+<p>Now click on &ldquo;Authorize&rdquo;. You should get a message saying that they key has been authorised.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/06.png" alt="Authorise the key"  />
+</p>
+<p>When you go back to the Public Key list you should see the &ldquo;Authorization Status&rdquo; of the key as &ldquo;authorized&rdquo;.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/07.png" alt="Key is authorised"  />
+</p>
+<h2 id="create-your-git-repository-to-cpanel">Create your Git Repository to cPanel<a hidden class="anchor" aria-hidden="true" href="#create-your-git-repository-to-cpanel">#</a></h2>
+<p>Back to cPanel, go to &ldquo;Files&rdquo; and &ldquo;Git Version Control&rdquo;.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/08.png" alt="Git Version Control"  />
+</p>
+<p>We&rsquo;ll be creating a new repository. Click &ldquo;Create&rdquo;.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/09.png" alt="Create Git repository"  />
+</p>
+<p>In the &ldquo;Create Repository&rdquo; window, disable the &ldquo;Clone a Repository&rdquo; toggle. This is only if you have an existing website hosted in another Git repository such as GitHub. We will be creating an empty repository.</p>
+<p>Enter the repository path. I created a folder for my repositories, and you should do the same. This is not the folder that is used to store your web pages (usually the <code>~/public_html</code> or <code>~/www</code> folders). You&rsquo;ll see how to get the files in the correct location after.</p>
+<p>Enter a name for the repository.</p>
+<p>Then click on &ldquo;Create&rdquo;.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/10.png" alt="Enter the repository details"  />
+</p>
+<p>You should see a message that it was created successfully along with some instructions to add the repository to an existing project, or to clone the repository and build a new project. Copy and save these instructions.</p>
+<p>Your repository should now be listed into your list of repositories.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/11.png" alt="Repository added"  />
+</p>
+<h2 id="edit-the-ssh-config">Edit the SSH config<a hidden class="anchor" aria-hidden="true" href="#edit-the-ssh-config">#</a></h2>
+<p>Since the cPanel Git uses SSH to access the repository, you need to edit the SSH config file to point to your SSH private key file.</p>
+<p>Go to your home folder.</p>
+<p>In Windows it&rsquo;ll be something like:</p>
+<p><code>C:\Users\&lt;username&gt;\</code></p>
+<p>In Linux it&rsquo;ll be:</p>
+<p><code>\home\&lt;username&gt;\</code> or just <code>~\</code></p>
+<p>You&rsquo;ll see a .ssh folder, if not, create it. Edit or create a text file named &ldquo;config&rdquo; with no extension (no .txt or anything).</p>
+<p>Add the following to the file:</p>
+<pre tabindex="0"><code>Host &lt;domain name&gt;
+  HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedKeyTypes +ssh-rsa
+  User &lt;username to access web host&gt;
+  IdentityFile &#34;&lt;full path to private key e.g. c:\keys\private.key&#34;
+  Port 22
+</code></pre><p>Save and close.</p>
+<h2 id="clone-the-git-repository-to-your-local-computer">Clone the Git repository to your local computer<a hidden class="anchor" aria-hidden="true" href="#clone-the-git-repository-to-your-local-computer">#</a></h2>
+<p>Once you have Git installed, you can clone the repository to your local computer. In this example we&rsquo;re cloning and not using an existing copy of a web site.</p>
+<p>You can copy the Clone URL from the cPanel Git Version Control list.</p>
+<p><img loading="lazy" src="/images/cpanel-git-1/12.png" alt="Copy Git URL"  />
+</p>
+<p>Open a command or PowerShell prompt and navigate to the place where you would like to clone the repository.</p>
+<pre tabindex="0"><code>PS C:\Users\sganpat\Website&gt; git clone ssh://&lt;username&gt;@essgeelabs.net/home/essgeelab/repositories/essgeelab.net
+Cloning into &#39;essgeelab.net&#39;...
+warning: You appear to have cloned an empty repository. 
+cd essgeeglab.net
+</code></pre><p>Create a Readme file to do an initial commit and push.</p>
+<pre tabindex="0"><code>echo &#34;# Readme&#34; &gt;&gt; README.md
+git add README.md
+git commit -m &#34;initial commit&#34;
+git push -u origin master
+</code></pre><p>You should get output like:</p>
+<pre tabindex="0"><code>Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 216 bytes | 108.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: Recieved update on checked-out branch, queueing deployment.
+remote: ---
+remote: apiversion: 3
+remote: func: create
+remote: module: VersionControlDeployment
+remote: result:
+remote:   data: ~
+remote:   errors: ~
+remote:   messages: ~
+remote:   metadata: {}
+remote:
+remote:   status: 1
+remote:   warnings: ~
+To ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net
+ \* [new branch]      master -&gt; master
+</code></pre><p>Great. All is setup to now push your website.</p>
+<h2 id="create-a-small-web-page-and-deploy">Create a small web page and deploy<a hidden class="anchor" aria-hidden="true" href="#create-a-small-web-page-and-deploy">#</a></h2>
+<p>Create a simple static web page and associated files such as stylesheets and images and add them to the repository. For this example I&rsquo;m using a simple page (<a href="/downloads/cpanel-git-1/essgeelab.net.zip">download</a>).</p>
+<pre tabindex="0"><code>PS C:\Users\sganpat\Website\essgeelab.net&gt; git status
+On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        images/
+        index.html
+        style.css
+
+nothing added to commit but untracked files present (use &#34;git add&#34; to track)
+
+PS C:\Users\sganpat\Website\essgeelab.net&gt; git add *
+
+PS C:\Users\sganpat\Website\essgeelab.net&gt; git commit -m &#34;simple website&#34;
+[master 5498e9e] simple website
+ 4 files changed, 197 insertions(+)
+ create mode 100644 images/egllogo.png
+ create mode 100644 images/twitter.png
+ create mode 100644 index.html
+ create mode 100644 style.css
+
+PS C:\Users\sganpat\Website\essgeelab.net&gt; git push origin master
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 15.86 KiB | 3.96 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: Recieved update on checked-out branch, queueing deployment.
+remote: ---
+remote: apiversion: 3
+remote: func: create
+remote: module: VersionControlDeployment
+remote: result:
+remote:   data: ~
+remote:   errors: ~
+remote:   messages: ~
+remote:   metadata: {}
+remote:
+remote:   status: 1
+remote:   warnings: ~
+To ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net
+   b295c0c..5498e9e  master -&gt; master
+</code></pre><p>Great, you&rsquo;ve added the site to the repository. But when you browse to the URL it doesn&rsquo;t work. That&rsquo;s because it needs to be deployed. To do this, you need to create a text file called <code>.cpanel.yml</code> and add your deploy tasks in there. These are the bash commands you would run to deploy the site from the repository folder.</p>
+<p>For instance, in my case it would be to copy the <code>index.html</code> and <code>style.css</code> files and the <code>images</code> folder to the root directory of the web server. So my <code>.cpanel.yml</code> file will look like:</p>
+<pre tabindex="0"><code>---
+deployment:
+ tasks:
+ - export DEPLOYPATH=/home/essgeelab/public_html/essgeelabs.net/
+ - /bin/cp index.html $DEPLOYPATH
+ - /bin/cp style.css $DEPLOYPATH
+ - /bin/cp -R images $DEPLOYPATH
+</code></pre><p>now commit that file and push to the remote respository.</p>
+<pre tabindex="0"><code>git add .cpanel.yml
+git commit -m &#34;cpanel deploy file&#34;
+git push origin master
+</code></pre><p>Now the website should be operational.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://essgeelabs.com/tags/devops/">devops</a></li>
+      <li><a href="https://essgeelabs.com/tags/git/">git</a></li>
+      <li><a href="https://essgeelabs.com/tags/web-hosting/">web hosting</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://essgeelabs.com/posts/first-post/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>First Post</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on twitter"
+        href="https://twitter.com/intent/tweet/?text=Using%20Git%20with%20cPanel%20to%20update%20your%20website&amp;url=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f&amp;hashtags=devops%2cgit%2cwebhosting">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f&amp;title=Using%20Git%20with%20cPanel%20to%20update%20your%20website&amp;summary=Using%20Git%20with%20cPanel%20to%20update%20your%20website&amp;source=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f&title=Using%20Git%20with%20cPanel%20to%20update%20your%20website">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on whatsapp"
+        href="https://api.whatsapp.com/send?text=Using%20Git%20with%20cPanel%20to%20update%20your%20website%20-%20https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Using Git with cPanel to update your website on telegram"
+        href="https://telegram.me/share/url?text=Using%20Git%20with%20cPanel%20to%20update%20your%20website&amp;url=https%3a%2f%2fessgeelabs.com%2fposts%2fcpanel-git-1%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://essgeelabs.com/">Ess Gee Labs</a></span>
+    <span>
+        running Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a> & 
+        Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
