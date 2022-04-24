@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Ess Gee Labs</title>
-    <link>https://essgeelabs.com/posts/</link>
-    <description>Recent content in Posts on Ess Gee Labs</description>
+    <title>Tutorial on Ess Gee Labs</title>
+    <link>https://essgeelabs.com/categories/tutorial/</link>
+    <description>Recent content in Tutorial on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://essgeelabs.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://essgeelabs.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a blog with Hugo</title>
       <link>https://essgeelabs.com/posts/hugo-blog-1/</link>
@@ -23,16 +23,6 @@
       
       <guid>https://essgeelabs.com/posts/cpanel-git-1/</guid>
       <description>Configuing cPanel Git Versioning for Web Site deployment</description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>https://essgeelabs.com/posts/first-post/</link>
-      <pubDate>Thu, 14 Apr 2022 21:48:37 -0400</pubDate>
-      
-      <guid>https://essgeelabs.com/posts/first-post/</guid>
-      <description>Welcome I&amp;rsquo;ve been meaning to put up a website like this for a really long time, but never got around to doing it. While I have by personal and business website, I&amp;rsquo;ve never put up a technical one.
-The truth is that even with over two decades of experience, I still feel that what I have to offer is not enough. That whatever I say is going to sound stupid or is not valuable.</description>
     </item>
     
   </channel>

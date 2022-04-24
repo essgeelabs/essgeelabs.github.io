@@ -11,7 +11,7 @@
 <meta name="author" content="Sachin Ganpat">
 <link rel="canonical" href="https://essgeelabs.com/posts/cpanel-git-1/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.48a18943c2fc15c38a372b8dde1f5e5dc0bc64fa6cb90f5a817d2f8c76b7f3ae.css" integrity="sha256-SKGJQ8L8FcOKNyuN3h9eXcC8ZPpsuQ9agX0vjHa3864=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://essgeelabs.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://essgeelabs.com/favicon-16x16.png">
@@ -28,16 +28,27 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Using Git with cPanel to update your website" />
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLGK7M9LKK"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-RLGK7M9LKK', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Using Git with cPanel to update your website" />
 <meta property="og:description" content="Configuing cPanel Git Versioning for Web Site deployment" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://essgeelabs.com/posts/cpanel-git-1/" />
-<meta property="og:image" content="https://essgeelabs.com/images/egllogo.jpg" /><meta property="article:section" content="posts" />
+<meta property="og:image" content="https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-18T20:00:00-04:00" />
 <meta property="article:modified_time" content="2022-04-18T20:00:00-04:00" /><meta property="og:site_name" content="EssGeeLabs" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://essgeelabs.com/images/egllogo.jpg" />
+<meta name="twitter:image" content="https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git.png" />
 <meta name="twitter:title" content="Using Git with cPanel to update your website"/>
 <meta name="twitter:description" content="Configuing cPanel Git Versioning for Web Site deployment"/>
 
@@ -75,7 +86,7 @@
   "articleBody": "In getting this website up and running I wanted a way to simplify updating the site from the command line to open opportunities for automation.\nFor this I wanted to be able to use Git to be able to mock up a website and then push the changes to the webhost once I was satisfied. So I was pleasantly surprised to find out that cPanel supports the use of Git repositories to do just that.\ncPanel is a web application that many web hosting providers use to allow customers to self-manage the backend of their websites.\nAll my examples here is based on Bluehost, who I use as my webhost. I’m also using Windows 10 but the techniques will work with other OSes.\nTo begin This is not a newbie tutorial. You should be comfortable with the command-line and understand how web server and web hosting works.\nYou should have Git installed. You can download from the Git website.\nYou can use any web editing tool that you would like. Remember that this would be a static website as compared to a dynamic website. I use Visual Studio Code for most of my editing needs.\nYou’ll need SSH key pairs. Generate them if you don’t already have one.\nAnd of course you need a web host that use cPanel with Git Version Control and a domain attached. I’m using an addon domain, but this will work for the main domain as well.\nAdd your SSH public key to the web host Log into your web host and in cPanel go to Security, and click on SSH Access. (In Bluehost you have to go to Advanced first.)\nClick on “Manage SSH Keys”\nThen click on “Import Key”.\nSpecify a name for the key and paste in the public key only. Then click on “Import”. Note that I can share my public key without fear of being compromised, which is the advantage of public-private key pairs.\nYou should see the new key in the “Public Keys” list. Click on “Manage” in the line with the key.\nNow click on “Authorize”. You should get a message saying that they key has been authorised.\nWhen you go back to the Public Key list you should see the “Authorization Status” of the key as “authorized”.\nCreate your Git Repository to cPanel Back to cPanel, go to “Files” and “Git Version Control”.\nWe’ll be creating a new repository. Click “Create”.\nIn the “Create Repository” window, disable the “Clone a Repository” toggle. This is only if you have an existing website hosted in another Git repository such as GitHub. We will be creating an empty repository.\nEnter the repository path. I created a folder for my repositories, and you should do the same. This is not the folder that is used to store your web pages (usually the ~/public_html or ~/www folders). You’ll see how to get the files in the correct location after.\nEnter a name for the repository.\nThen click on “Create”.\nYou should see a message that it was created successfully along with some instructions to add the repository to an existing project, or to clone the repository and build a new project. Copy and save these instructions.\nYour repository should now be listed into your list of repositories.\nEdit the SSH config Since the cPanel Git uses SSH to access the repository, you need to edit the SSH config file to point to your SSH private key file.\nGo to your home folder.\nIn Windows it’ll be something like:\nC:\\Users\\\\\nIn Linux it’ll be:\n\\home\\\\ or just ~\\\nYou’ll see a .ssh folder, if not, create it. Edit or create a text file named “config” with no extension (no .txt or anything).\nAdd the following to the file:\nHost HostKeyAlgorithms +ssh-rsa\rPubkeyAcceptedKeyTypes +ssh-rsa\rUser IdentityFile \"Save and close.\nClone the Git repository to your local computer Once you have Git installed, you can clone the repository to your local computer. In this example we’re cloning and not using an existing copy of a web site.\nYou can copy the Clone URL from the cPanel Git Version Control list.\nOpen a command or PowerShell prompt and navigate to the place where you would like to clone the repository.\nPS C:\\Users\\sganpat\\Website git clone ssh://@essgeelabs.net/home/essgeelab/repositories/essgeelab.net\rCloning into 'essgeelab.net'...\rwarning: You appear to have cloned an empty repository. cd essgeeglab.net Create a Readme file to do an initial commit and push.\necho \"# Readme\"  README.md\rgit add README.md\rgit commit -m \"initial commit\"\rgit push -u origin master You should get output like:\nEnumerating objects: 3, done.\rCounting objects: 100% (3/3), done.\rWriting objects: 100% (3/3), 216 bytes | 108.00 KiB/s, done.\rTotal 3 (delta 0), reused 0 (delta 0), pack-reused 0\rremote: Recieved update on checked-out branch, queueing deployment.\rremote: ---\rremote: apiversion: 3\rremote: func: create\rremote: module: VersionControlDeployment\rremote: result:\rremote: data: ~\rremote: errors: ~\rremote: messages: ~\rremote: metadata: {}\rremote:\rremote: status: 1\rremote: warnings: ~\rTo ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net\r\\* [new branch] master - master Great. All is setup to now push your website.\nCreate a small web page and deploy Create a simple static web page and associated files such as stylesheets and images and add them to the repository. For this example I’m using a simple page (download).\nPS C:\\Users\\sganpat\\Website\\essgeelab.net git status\rOn branch master\rYour branch is up to date with 'origin/master'.\rUntracked files:\r(use \"git add ...\" to include in what will be committed)\rimages/\rindex.html\rstyle.css\rnothing added to commit but untracked files present (use \"git add\" to track)\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git add *\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git commit -m \"simple website\"\r[master 5498e9e] simple website\r4 files changed, 197 insertions(+)\rcreate mode 100644 images/egllogo.png\rcreate mode 100644 images/twitter.png\rcreate mode 100644 index.html\rcreate mode 100644 style.css\rPS C:\\Users\\sganpat\\Website\\essgeelab.net git push origin master\rEnumerating objects: 8, done.\rCounting objects: 100% (8/8), done.\rDelta compression using up to 8 threads\rCompressing objects: 100% (7/7), done.\rWriting objects: 100% (7/7), 15.86 KiB | 3.96 MiB/s, done.\rTotal 7 (delta 0), reused 0 (delta 0), pack-reused 0\rremote: Recieved update on checked-out branch, queueing deployment.\rremote: ---\rremote: apiversion: 3\rremote: func: create\rremote: module: VersionControlDeployment\rremote: result:\rremote: data: ~\rremote: errors: ~\rremote: messages: ~\rremote: metadata: {}\rremote:\rremote: status: 1\rremote: warnings: ~\rTo ssh://essgeelabs.net/home/essgeelab/repositories/essgeelab.net\rb295c0c..5498e9e master - master Great, you’ve added the site to the repository. But when you browse to the URL it doesn’t work. That’s because it needs to be deployed. To do this, you need to create a text file called .cpanel.yml and add your deploy tasks in there. These are the bash commands you would run to deploy the site from the repository folder.\nFor instance, in my case it would be to copy the index.html and style.css files and the images folder to the root directory of the web server. So my .cpanel.yml file will look like:\n---\rdeployment:\rtasks:\r- export DEPLOYPATH=/home/essgeelab/public_html/essgeelabs.net/\r- /bin/cp index.html $DEPLOYPATH\r- /bin/cp style.css $DEPLOYPATH\r- /bin/cp -R images $DEPLOYPATH now commit that file and push to the remote respository.\ngit add .cpanel.yml\rgit commit -m \"cpanel deploy file\"\rgit push origin master Now the website should be operational.\n",
   "wordCount" : "1211",
   "inLanguage": "en",
-  "image":"https://essgeelabs.com/images/egllogo.jpg","datePublished": "2022-04-18T20:00:00-04:00",
+  "image":"https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git.png","datePublished": "2022-04-18T20:00:00-04:00",
   "dateModified": "2022-04-18T20:00:00-04:00",
   "author":{
     "@type": "Person",
@@ -169,10 +180,16 @@
     <h1 class="post-title">
       Using Git with cPanel to update your website
     </h1>
-    <div class="post-meta"><span title='2022-04-18 20:00:00 -0400 -04'>April 18, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Sachin Ganpat&nbsp;|&nbsp;<a href="https://github.com/essgeelabs/essgeelabs/tree/master/content/posts/cpanel-git-1.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-04-18 20:00:00 -0400 -04'>April 18, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Sachin Ganpat&nbsp;|&nbsp;<a href="https://github.com/essgeelabs/essgeelabs/tree/master/content/posts/cpanel-git-1/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git_hu80513fba4480dd52cd3b3d96f54f363c_22806_360x0_resize_box_3.png 360w ,https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git_hu80513fba4480dd52cd3b3d96f54f363c_22806_480x0_resize_box_3.png 480w ,https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git_hu80513fba4480dd52cd3b3d96f54f363c_22806_720x0_resize_box_3.png 720w ,https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git.png 720w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://essgeelabs.com/posts/cpanel-git-1/images/cpanel-git.png" alt="cPanel and Git" 
+            width="720" height="360">
+        
+</figure>
   <div class="post-content"><p>In getting this website up and running I wanted a way to simplify updating the site from the command line to open opportunities for automation.</p>
 <p>For this I wanted to be able to use Git to be able to mock up a website and then push the changes to the webhost once I was satisfied. So I was pleasantly surprised to find out that cPanel supports the use of Git repositories to do just that.</p>
 <p>cPanel is a web application that many web hosting providers use to allow customers to self-manage the backend of their websites.</p>
@@ -185,42 +202,42 @@
 <p>And of course you need a web host that use cPanel with Git Version Control and a domain attached. I&rsquo;m using an addon domain, but this will work for the main domain as well.</p>
 <h2 id="add-your-ssh-public-key-to-the-web-host">Add your SSH public key to the web host<a hidden class="anchor" aria-hidden="true" href="#add-your-ssh-public-key-to-the-web-host">#</a></h2>
 <p>Log into your web host and in cPanel go to Security, and click on SSH Access. (In Bluehost you have to go to Advanced first.)</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/01.png" alt="SSH Access"  />
+<p><img loading="lazy" src="images/01.png" alt="SSH Access"  />
 </p>
 <p>Click on &ldquo;Manage SSH Keys&rdquo;</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/02.png" alt="Manage SSH Keys"  />
+<p><img loading="lazy" src="images/02.png" alt="Manage SSH Keys"  />
 </p>
 <p>Then click on &ldquo;Import Key&rdquo;.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/03.png" alt="Import Key"  />
+<p><img loading="lazy" src="images/03.png" alt="Import Key"  />
 </p>
 <p>Specify a name for the key and paste in the <em><!-- raw HTML omitted -->public key only<!-- raw HTML omitted --></em>. Then click on &ldquo;Import&rdquo;. Note that I can share my public key without fear of being compromised, which is the advantage of public-private key pairs.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/04.png" alt="Enter Key Information"  />
+<p><img loading="lazy" src="images/04.png" alt="Enter Key Information"  />
 </p>
 <p>You should see the new key in the &ldquo;Public Keys&rdquo; list. Click on &ldquo;Manage&rdquo; in the line with the key.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/05.png" alt="Manage the new key"  />
+<p><img loading="lazy" src="images/05.png" alt="Manage the new key"  />
 </p>
 <p>Now click on &ldquo;Authorize&rdquo;. You should get a message saying that they key has been authorised.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/06.png" alt="Authorise the key"  />
+<p><img loading="lazy" src="images/06.png" alt="Authorise the key"  />
 </p>
 <p>When you go back to the Public Key list you should see the &ldquo;Authorization Status&rdquo; of the key as &ldquo;authorized&rdquo;.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/07.png" alt="Key is authorised"  />
+<p><img loading="lazy" src="images/07.png" alt="Key is authorised"  />
 </p>
 <h2 id="create-your-git-repository-to-cpanel">Create your Git Repository to cPanel<a hidden class="anchor" aria-hidden="true" href="#create-your-git-repository-to-cpanel">#</a></h2>
 <p>Back to cPanel, go to &ldquo;Files&rdquo; and &ldquo;Git Version Control&rdquo;.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/08.png" alt="Git Version Control"  />
+<p><img loading="lazy" src="images/08.png" alt="Git Version Control"  />
 </p>
 <p>We&rsquo;ll be creating a new repository. Click &ldquo;Create&rdquo;.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/09.png" alt="Create Git repository"  />
+<p><img loading="lazy" src="images/09.png" alt="Create Git repository"  />
 </p>
 <p>In the &ldquo;Create Repository&rdquo; window, disable the &ldquo;Clone a Repository&rdquo; toggle. This is only if you have an existing website hosted in another Git repository such as GitHub. We will be creating an empty repository.</p>
 <p>Enter the repository path. I created a folder for my repositories, and you should do the same. This is not the folder that is used to store your web pages (usually the <code>~/public_html</code> or <code>~/www</code> folders). You&rsquo;ll see how to get the files in the correct location after.</p>
 <p>Enter a name for the repository.</p>
 <p>Then click on &ldquo;Create&rdquo;.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/10.png" alt="Enter the repository details"  />
+<p><img loading="lazy" src="images/10.png" alt="Enter the repository details"  />
 </p>
 <p>You should see a message that it was created successfully along with some instructions to add the repository to an existing project, or to clone the repository and build a new project. Copy and save these instructions.</p>
 <p>Your repository should now be listed into your list of repositories.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/11.png" alt="Repository added"  />
+<p><img loading="lazy" src="images/11.png" alt="Repository added"  />
 </p>
 <h2 id="edit-the-ssh-config">Edit the SSH config<a hidden class="anchor" aria-hidden="true" href="#edit-the-ssh-config">#</a></h2>
 <p>Since the cPanel Git uses SSH to access the repository, you need to edit the SSH config file to point to your SSH private key file.</p>
@@ -241,7 +258,7 @@
 <h2 id="clone-the-git-repository-to-your-local-computer">Clone the Git repository to your local computer<a hidden class="anchor" aria-hidden="true" href="#clone-the-git-repository-to-your-local-computer">#</a></h2>
 <p>Once you have Git installed, you can clone the repository to your local computer. In this example we&rsquo;re cloning and not using an existing copy of a web site.</p>
 <p>You can copy the Clone URL from the cPanel Git Version Control list.</p>
-<p><img loading="lazy" src="/images/cpanel-git-1/12.png" alt="Copy Git URL"  />
+<p><img loading="lazy" src="images/12.png" alt="Copy Git URL"  />
 </p>
 <p>Open a command or PowerShell prompt and navigate to the place where you would like to clone the repository.</p>
 <pre tabindex="0"><code>PS C:\Users\sganpat\Website&gt; git clone ssh://&lt;username&gt;@essgeelabs.net/home/essgeelab/repositories/essgeelab.net
@@ -345,6 +362,11 @@ git push origin master
       <li><a href="https://essgeelabs.com/tags/web-hosting/">web hosting</a></li>
     </ul>
 <nav class="paginav">
+  <a class="prev" href="https://essgeelabs.com/posts/hugo-blog-1/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>Building a blog with Hugo</span>
+  </a>
   <a class="next" href="https://essgeelabs.com/posts/first-post/">
     <span class="title">Next Page »</span>
     <br>
