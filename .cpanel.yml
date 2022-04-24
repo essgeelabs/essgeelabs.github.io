@@ -2,14 +2,6 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home4/interxec/public_html/essgeelabs/
- - /bin/rm -r $DEPLOYPATH/css 
- - /bin/rm -r $DEPLOYPATH/js 
- - /bin/rm -r $DEPLOYPATH/img
- - /bin/rm -r $DEPLOYPATH/categories
- - /bin/rm -r $DEPLOYPATH/page
- - /bin/rm -r $DEPLOYPATH/posts
- - /bin/rm -r $DEPLOYPATH/tags
- - /bin/rm $DEPLOYPATH/style.css
  - /bin/cp -Rf about $DEPLOYPATH
  - /bin/cp -Rf archives $DEPLOYPATH
  - /bin/cp -Rf assets $DEPLOYPATH
