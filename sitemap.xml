@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/</loc>
+    <loc>https://essgeelabs.com/categories/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>https://essgeelabs.com/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/git/</loc>
+    <loc>https://essgeelabs.com/tags/git/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/git-unsafe-repository/</loc>
+    <loc>https://essgeelabs.com/posts/git-unsafe-repository/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>https://essgeelabs.com/posts/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://essgeelabs.com/tags/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/tech-tips/</loc>
+    <loc>https://essgeelabs.com/categories/tech-tips/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/windows/</loc>
+    <loc>https://essgeelabs.com/tags/windows/</loc>
     <lastmod>2022-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/blog/</loc>
+    <loc>https://essgeelabs.com/tags/blog/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/hugo-blog-1/</loc>
+    <loc>https://essgeelabs.com/posts/hugo-blog-1/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hugo/</loc>
+    <loc>https://essgeelabs.com/tags/hugo/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/tutorial/</loc>
+    <loc>https://essgeelabs.com/categories/tutorial/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/devops/</loc>
+    <loc>https://essgeelabs.com/tags/devops/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
-    <loc>/categories/devops/</loc>
+    <loc>https://essgeelabs.com/categories/devops/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
-    <loc>/posts/cpanel-git-1/</loc>
+    <loc>https://essgeelabs.com/posts/cpanel-git-1/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
-    <loc>/tags/web-hosting/</loc>
+    <loc>https://essgeelabs.com/tags/web-hosting/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
-    <loc>/posts/first-post/</loc>
+    <loc>https://essgeelabs.com/posts/first-post/</loc>
     <lastmod>2022-04-14T21:48:37-04:00</lastmod>
   </url><url>
-    <loc>/tags/news/</loc>
+    <loc>https://essgeelabs.com/tags/news/</loc>
     <lastmod>2022-04-14T21:48:37-04:00</lastmod>
   </url><url>
-    <loc>/categories/news/</loc>
+    <loc>https://essgeelabs.com/categories/news/</loc>
     <lastmod>2022-04-14T21:48:37-04:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
+    <loc>https://essgeelabs.com/about/</loc>
   </url><url>
-    <loc>/archives/</loc>
+    <loc>https://essgeelabs.com/archives/</loc>
   </url><url>
-    <loc>/search/</loc>
+    <loc>https://essgeelabs.com/search/</loc>
   </url>
 </urlset>
