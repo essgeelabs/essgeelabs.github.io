@@ -1,6 +1,6 @@
 ---
 # date 20220424
-# time: 13:12
+# time: 13:20
 deployment:
  tasks:
  - export DEPLOYPATH=/home4/interxec/public_html/essgeelabs/
@@ -23,4 +23,4 @@ deployment:
  - /bin/cp robots.txt $DEPLOYPATH
  - /bin/cp sitemap.xml $DEPLOYPATH
  - /bin/cp -Rf downloads $DEPLOYPATH
- - /bin/cp -Rf docs $DEPLOYPATH
+ - /bin/mkdir $DEPLOYPATH\docs
