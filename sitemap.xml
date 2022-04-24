@@ -2,25 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://essgeelabs.com/categories/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/git/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/posts/git-unsafe-repository/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/posts/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/categories/tech-tips/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/windows/</loc>
+    <lastmod>2022-04-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://essgeelabs.com/tags/blog/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/hugo-blog-1/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://essgeelabs.com/categories/</loc>
-    <lastmod>2022-04-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/</loc>
-    <lastmod>2022-04-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://essgeelabs.com/tags/hugo/</loc>
-    <lastmod>2022-04-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/posts/</loc>
-    <lastmod>2022-04-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/tags/</loc>
     <lastmod>2022-04-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/categories/tutorial/</loc>
@@ -30,9 +42,6 @@
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/categories/devops/</loc>
-    <lastmod>2022-04-18T20:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/tags/git/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/cpanel-git-1/</loc>
