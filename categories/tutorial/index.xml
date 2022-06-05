@@ -6,25 +6,7 @@
     <description>Recent content in Tutorial on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 May 2022 17:43:32 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Home Lab With Proxmox</title>
-      <link>https://essgeelabs.com/posts/home-lab-with-proxmox/</link>
-      <pubDate>Tue, 24 May 2022 17:43:32 -0400</pubDate>
-      
-      <guid>https://essgeelabs.com/posts/home-lab-with-proxmox/</guid>
-      <description>A virtualisation server goes a long way when building your home lab. Consider Proxmox for your project.</description>
-    </item>
-    
-    <item>
-      <title>Building a blog with Hugo</title>
-      <link>https://essgeelabs.com/posts/hugo-blog-1/</link>
-      <pubDate>Sat, 23 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://essgeelabs.com/posts/hugo-blog-1/</guid>
-      <description>This is the first time I&amp;rsquo;m using Hugo so I made a little tutorial to help others.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 18 Apr 2022 20:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Git with cPanel to update your website</title>
       <link>https://essgeelabs.com/posts/cpanel-git-1/</link>
