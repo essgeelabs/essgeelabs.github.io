@@ -6,7 +6,16 @@
     <description>Recent content in virtualisation on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/virtualisation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/virtualisation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Virtual Machines in Proxmox</title>
+      <link>https://essgeelabs.com/posts/virtual-machines-in-proxmox/</link>
+      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/virtual-machines-in-proxmox/</guid>
+      <description>Now that Proxmox and the virtual networks are setup, we can spin up some virtual instances.</description>
+    </item>
+    
     <item>
       <title>Virtual Networking Within Proxmox</title>
       <link>https://essgeelabs.com/posts/virtual-networking-within-proxmox/</link>
