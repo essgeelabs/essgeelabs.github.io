@@ -6,11 +6,29 @@
     <description>Recent content in Categories on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jun 2022 21:50:20 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cybersecurity</title>
+      <link>https://essgeelabs.com/categories/cybersecurity/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/categories/cybersecurity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Networking</title>
+      <link>https://essgeelabs.com/categories/networking/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/categories/networking/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Tutorials</title>
       <link>https://essgeelabs.com/categories/tutorials/</link>
-      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
       
       <guid>https://essgeelabs.com/categories/tutorials/</guid>
       <description></description>
@@ -19,18 +37,9 @@
     <item>
       <title>Virtualisation</title>
       <link>https://essgeelabs.com/categories/virtualisation/</link>
-      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
       
       <guid>https://essgeelabs.com/categories/virtualisation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Networking</title>
-      <link>https://essgeelabs.com/categories/networking/</link>
-      <pubDate>Sat, 04 Jun 2022 18:00:00 -0400</pubDate>
-      
-      <guid>https://essgeelabs.com/categories/networking/</guid>
       <description></description>
     </item>
     
@@ -58,15 +67,6 @@
       <pubDate>Mon, 18 Apr 2022 20:00:00 -0400</pubDate>
       
       <guid>https://essgeelabs.com/categories/devops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>https://essgeelabs.com/categories/tutorial/</link>
-      <pubDate>Mon, 18 Apr 2022 20:00:00 -0400</pubDate>
-      
-      <guid>https://essgeelabs.com/categories/tutorial/</guid>
       <description></description>
     </item>
     

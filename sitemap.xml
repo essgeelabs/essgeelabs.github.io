@@ -2,49 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
     <loc>https://essgeelabs.com/categories/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/cybersecurity/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/categories/cybersecurity/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
-    <loc>https://essgeelabs.com/tags/linux/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <loc>https://essgeelabs.com/tags/firewalls/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/lab/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/networking/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/categories/networking/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/tags/proxmox/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/tags/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/categories/tutorials/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/virtualisation/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/categories/virtualisation/</loc>
+    <lastmod>2022-06-19T21:50:20-04:00</lastmod>
+  </url><url>
+    <loc>https://essgeelabs.com/tags/linux/</loc>
     <lastmod>2022-06-06T18:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/virtual-machines-in-proxmox/</loc>
     <lastmod>2022-06-06T18:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://essgeelabs.com/tags/virtualisation/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/categories/virtualisation/</loc>
-    <lastmod>2022-06-06T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/tags/networking/</loc>
-    <lastmod>2022-06-04T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/categories/networking/</loc>
-    <lastmod>2022-06-04T18:00:00-04:00</lastmod>
-  </url><url>
     <loc>https://essgeelabs.com/posts/virtual-networking-within-proxmox/</loc>
     <lastmod>2022-06-04T18:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/home-lab-with-proxmox/</loc>
-    <lastmod>2022-05-24T17:43:32-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/tags/lab/</loc>
     <lastmod>2022-05-24T17:43:32-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/network-switching-tips/</loc>
@@ -78,9 +90,6 @@
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/categories/devops/</loc>
-    <lastmod>2022-04-18T20:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://essgeelabs.com/categories/tutorial/</loc>
     <lastmod>2022-04-18T20:00:00-04:00</lastmod>
   </url><url>
     <loc>https://essgeelabs.com/posts/cpanel-git-1/</loc>

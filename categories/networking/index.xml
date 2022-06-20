@@ -6,7 +6,16 @@
     <description>Recent content in Networking on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jun 2022 21:50:20 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build a Check Point Firewall Lab</title>
+      <link>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</guid>
+      <description>Check Point is the most mature firewall in the industry. Here we install the firewall and management in a lab environment that you can use for testing or training.</description>
+    </item>
+    
     <item>
       <title>Virtual Networking Within Proxmox</title>
       <link>https://essgeelabs.com/posts/virtual-networking-within-proxmox/</link>
@@ -14,6 +23,15 @@
       
       <guid>https://essgeelabs.com/posts/virtual-networking-within-proxmox/</guid>
       <description>In the last post I gave a brief overview of Proxmox, now we discuss creating virtual networks to allow VMs to communicate.</description>
+    </item>
+    
+    <item>
+      <title>Network Switching Tips</title>
+      <link>https://essgeelabs.com/posts/network-switching-tips/</link>
+      <pubDate>Sun, 08 May 2022 21:11:16 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/network-switching-tips/</guid>
+      <description>In my experience I&amp;rsquo;ve noticed several things that many people don&amp;rsquo;t know about switches so I thought it wise to document some. I&amp;rsquo;ll be updating this when new things come to mind.</description>
     </item>
     
   </channel>

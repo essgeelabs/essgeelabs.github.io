@@ -6,20 +6,47 @@
     <description>Recent content in Tags on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jun 2022 21:50:20 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>linux</title>
-      <link>https://essgeelabs.com/tags/linux/</link>
-      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      <title>cybersecurity</title>
+      <link>https://essgeelabs.com/tags/cybersecurity/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
       
-      <guid>https://essgeelabs.com/tags/linux/</guid>
+      <guid>https://essgeelabs.com/tags/cybersecurity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>firewalls</title>
+      <link>https://essgeelabs.com/tags/firewalls/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/tags/firewalls/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lab</title>
+      <link>https://essgeelabs.com/tags/lab/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/tags/lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>networking</title>
+      <link>https://essgeelabs.com/tags/networking/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/tags/networking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>proxmox</title>
       <link>https://essgeelabs.com/tags/proxmox/</link>
-      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
       
       <guid>https://essgeelabs.com/tags/proxmox/</guid>
       <description></description>
@@ -28,27 +55,18 @@
     <item>
       <title>virtualisation</title>
       <link>https://essgeelabs.com/tags/virtualisation/</link>
-      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
       
       <guid>https://essgeelabs.com/tags/virtualisation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>networking</title>
-      <link>https://essgeelabs.com/tags/networking/</link>
-      <pubDate>Sat, 04 Jun 2022 18:00:00 -0400</pubDate>
+      <title>linux</title>
+      <link>https://essgeelabs.com/tags/linux/</link>
+      <pubDate>Mon, 06 Jun 2022 18:00:00 -0400</pubDate>
       
-      <guid>https://essgeelabs.com/tags/networking/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>lab</title>
-      <link>https://essgeelabs.com/tags/lab/</link>
-      <pubDate>Tue, 24 May 2022 17:43:32 -0400</pubDate>
-      
-      <guid>https://essgeelabs.com/tags/lab/</guid>
+      <guid>https://essgeelabs.com/tags/linux/</guid>
       <description></description>
     </item>
     
