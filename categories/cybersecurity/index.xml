@@ -6,7 +6,16 @@
     <description>Recent content in Cybersecurity on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Jun 2022 21:50:20 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/categories/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure Your Check Point Firewall</title>
+      <link>https://essgeelabs.com/posts/configure-your-check-point-firewall/</link>
+      <pubDate>Mon, 20 Jun 2022 18:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/configure-your-check-point-firewall/</guid>
+      <description>In this second instalment of getting a Check Point home lab built, it&amp;rsquo;s time to create some rules to get started.</description>
+    </item>
+    
     <item>
       <title>Build a Check Point Firewall Lab</title>
       <link>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</link>
