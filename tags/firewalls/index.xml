@@ -6,7 +6,16 @@
     <description>Recent content in firewalls on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jun 2022 20:59:36 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/firewalls/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/firewalls/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Check Point Firewall Log Viewer</title>
+      <link>https://essgeelabs.com/posts/the-check-point-firewall-log-viewer/</link>
+      <pubDate>Sun, 26 Jun 2022 18:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/the-check-point-firewall-log-viewer/</guid>
+      <description>One of the best features of Check Point firewalls has always been the log viewer, and this guide will be helpful in using it.</description>
+    </item>
+    
     <item>
       <title>Fortigate SDWAN With VPN</title>
       <link>https://essgeelabs.com/posts/fortigate-sdwan-with-vpn/</link>
