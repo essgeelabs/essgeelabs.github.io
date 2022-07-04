@@ -1,6 +1,6 @@
 ---
-# date 20220626
-# time: 21:05
+# date 20220703
+# time: 22:17
 deployment:
  tasks:
  - export DEPLOYPATH=/home4/interxec/public_html/essgeelabs/

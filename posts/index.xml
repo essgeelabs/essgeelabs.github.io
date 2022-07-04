@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Ess Gee Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jun 2022 18:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jul 2022 20:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAT on Check Point Firewall</title>
+      <link>https://essgeelabs.com/posts/nat-on-check-point-firewall/</link>
+      <pubDate>Sun, 03 Jul 2022 20:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/nat-on-check-point-firewall/</guid>
+      <description>In this final part of the basic setup of a Check Point firewall I walk though NAT configurations.</description>
+    </item>
+    
     <item>
       <title>The Check Point Firewall Log Viewer</title>
       <link>https://essgeelabs.com/posts/the-check-point-firewall-log-viewer/</link>
