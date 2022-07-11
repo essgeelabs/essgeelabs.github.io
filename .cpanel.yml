@@ -1,27 +1,7 @@
 ---
-# date 20220703
-# time: 22:20
 deployment:
  tasks:
  - export DEPLOYPATH=/home4/interxec/public_html/essgeelabs/
- - /bin/rm -rf /home4/interxec/public_html/essgeelabs/*
- - /bin/cp -Rf about $DEPLOYPATH
- - /bin/cp -Rf archives $DEPLOYPATH
- - /bin/cp -Rf assets $DEPLOYPATH
- - /bin/cp -Rf categories $DEPLOYPATH
- - /bin/cp -Rf downloads $DEPLOYPATH
- - /bin/cp -Rf images $DEPLOYPATH
- - /bin/cp -Rf page $DEPLOYPATH
- - /bin/cp -Rf posts $DEPLOYPATH
- - /bin/cp -Rf search $DEPLOYPATH
- - /bin/cp -Rf tags $DEPLOYPATH
- - /bin/cp 404.html $DEPLOYPATH
- - /bin/cp favicon-16x16.png $DEPLOYPATH
- - /bin/cp favicon-32x32.png $DEPLOYPATH
- - /bin/cp favicon.ico $DEPLOYPATH
  - /bin/cp index.html $DEPLOYPATH
- - /bin/cp index.json $DEPLOYPATH
- - /bin/cp index.xml $DEPLOYPATH
- - /bin/cp robots.txt $DEPLOYPATH
- - /bin/cp sitemap.xml $DEPLOYPATH
-
+ - /bin/cp style.css $DEPLOYPATH
+ - /bin/cp images/* $DEPLOYPATH/images
