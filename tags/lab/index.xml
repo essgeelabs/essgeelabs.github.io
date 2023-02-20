@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>lab on Ess Gee Labs</title>
+    <link>https://essgeelabs.com/tags/lab/</link>
+    <description>Recent content in lab on Ess Gee Labs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Jul 2022 20:00:00 -0400</lastBuildDate><atom:link href="https://essgeelabs.com/tags/lab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAT on Check Point Firewall</title>
+      <link>https://essgeelabs.com/posts/nat-on-check-point-firewall/</link>
+      <pubDate>Sun, 03 Jul 2022 20:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/nat-on-check-point-firewall/</guid>
+      <description>In this final part of the basic setup of a Check Point firewall, I walk through NAT configurations.</description>
+    </item>
+    
+    <item>
+      <title>The Check Point Firewall Log Viewer</title>
+      <link>https://essgeelabs.com/posts/the-check-point-firewall-log-viewer/</link>
+      <pubDate>Sun, 26 Jun 2022 18:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/the-check-point-firewall-log-viewer/</guid>
+      <description>One of the best features of Check Point firewalls has always been the log viewer, and this guide will be helpful in using it.</description>
+    </item>
+    
+    <item>
+      <title>Fortigate SDWAN With VPN</title>
+      <link>https://essgeelabs.com/posts/fortigate-sdwan-with-vpn/</link>
+      <pubDate>Thu, 23 Jun 2022 20:59:36 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/fortigate-sdwan-with-vpn/</guid>
+      <description>A quick guide to implementing load-sharing with encryption across two private links using Fortinet Fortigate firewalls.</description>
+    </item>
+    
+    <item>
+      <title>Configure Your Check Point Firewall</title>
+      <link>https://essgeelabs.com/posts/configure-your-check-point-firewall/</link>
+      <pubDate>Mon, 20 Jun 2022 18:00:00 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/configure-your-check-point-firewall/</guid>
+      <description>In this second instalment of getting a Check Point home lab built, it&amp;rsquo;s time to create some rules to get started.</description>
+    </item>
+    
+    <item>
+      <title>Build a Check Point Firewall Lab</title>
+      <link>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</link>
+      <pubDate>Sun, 19 Jun 2022 21:50:20 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/build-a-check-point-firewall-lab/</guid>
+      <description>Check Point is the most mature firewall in the industry. Here we install the firewall and management in a lab environment that you can use for testing or training.</description>
+    </item>
+    
+    <item>
+      <title>Home Lab With Proxmox</title>
+      <link>https://essgeelabs.com/posts/home-lab-with-proxmox/</link>
+      <pubDate>Tue, 24 May 2022 17:43:32 -0400</pubDate>
+      
+      <guid>https://essgeelabs.com/posts/home-lab-with-proxmox/</guid>
+      <description>A virtualisation server goes a long way when building your home lab. Consider Proxmox for your project.</description>
+    </item>
+    
+  </channel>
+</rss>
